@@ -37,29 +37,36 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
-  <li><a href="../modules/area.html">area</a></li>
-  <li><strong>chunk</strong></li>
-  <li><a href="../modules/position.html">position</a></li>
+<ul class="nowrap">
+  <li><a href="../modules/Area.html">Area</a></li>
+  <li><strong>Chunk</strong></li>
+  <li><a href="../modules/Position.html">Position</a></li>
   <li><a href="../modules/Tile.html">Tile</a></li>
-  <li><a href="../modules/core.html">core</a></li>
-  <li><a href="../modules/entity.html">entity</a></li>
-  <li><a href="../modules/inventory.html">inventory</a></li>
+  <li><a href="../modules/Color.html">Color</a></li>
+  <li><a href="../modules/Config.html">Config</a></li>
+  <li><a href="../modules/Core.html">Core</a></li>
+  <li><a href="../modules/Data.html">Data</a></li>
+  <li><a href="../modules/Recipe.html">Recipe</a></li>
+  <li><a href="../modules/Time.html">Time</a></li>
+  <li><a href="../modules/Entity.html">Entity</a></li>
+  <li><a href="../modules/Inventory.html">Inventory</a></li>
   <li><a href="../modules/Event.html">Event</a></li>
-  <li><a href="../modules/game.html">game</a></li>
+  <li><a href="../modules/Event.Gui.html">Event.Gui</a></li>
+  <li><a href="../modules/Event.Time.html">Event.Time</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
   <li><a href="../modules/Gui.html">Gui</a></li>
-  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/Logger.html">Logger</a></li>
   <li><a href="../modules/string.html">string</a></li>
-  <li><a href="../modules/surface.html">surface</a></li>
+  <li><a href="../modules/Surface.html">Surface</a></li>
   <li><a href="../modules/table.html">table</a></li>
-  <li><a href="../modules/time.html">time</a></li>
+  <li><a href="../modules/Trains.html">Trains</a></li>
 </ul>
 
 </div>
 
 <div id="content">
 
-<h1>Module <code>chunk</code></h1>
+<h1>Module <code>Chunk</code></h1>
 <p>Chunk module
  <p>A chunk represents a 32x32 area of a surface in factorio.</p></p>
 <p>
@@ -70,23 +77,23 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Chunk.from_position">Chunk.from_position (position)</a></td>
+	<td class="name" nowrap><a href="#from_position">from_position (position)</a></td>
 	<td class="summary">Calculates the chunk coordinates for the tile position given</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Chunk.to_area">Chunk.to_area (chunk_pos)</a></td>
+	<td class="name" nowrap><a href="#to_area">to_area (chunk_pos)</a></td>
 	<td class="summary">Converts a chunk to the area it contains</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Chunk.get_data">Chunk.get_data (surface, chunk_pos, default_value)</a></td>
+	<td class="name" nowrap><a href="#get_data">get_data (surface, chunk_pos, default_value)</a></td>
 	<td class="summary">Gets user data from the chunk, stored in a mod's global data.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Chunk.set_data">Chunk.set_data (surface, chunk_pos, data)</a></td>
+	<td class="name" nowrap><a href="#set_data">set_data (surface, chunk_pos, data)</a></td>
 	<td class="summary">Sets user data on the chunk, stored in a mod's global data.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Chunk.get_index">Chunk.get_index (surface, chunk_pos)</a></td>
+	<td class="name" nowrap><a href="#get_index">get_index (surface, chunk_pos)</a></td>
 	<td class="summary">Calculates and returns a stable, deterministic, unique integer id for the given chunk_pos
  <p> The id will not change once calculated</p></td>
 	</tr>
@@ -100,8 +107,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "Chunk.from_position"></a>
-    <strong>Chunk.from_position (position)</strong>
+    <a name = "from_position"></a>
+    <strong>from_position (position)</strong>
     </dt>
     <dd>
     Calculates the chunk coordinates for the tile position given
@@ -129,8 +136,8 @@
 
 </dd>
     <dt>
-    <a name = "Chunk.to_area"></a>
-    <strong>Chunk.to_area (chunk_pos)</strong>
+    <a name = "to_area"></a>
+    <strong>to_area (chunk_pos)</strong>
     </dt>
     <dd>
     Converts a chunk to the area it contains
@@ -154,8 +161,8 @@
 
 </dd>
     <dt>
-    <a name = "Chunk.get_data"></a>
-    <strong>Chunk.get_data (surface, chunk_pos, default_value)</strong>
+    <a name = "get_data"></a>
+    <strong>get_data (surface, chunk_pos, default_value)</strong>
     </dt>
     <dd>
     Gets user data from the chunk, stored in a mod's global data.
@@ -186,8 +193,8 @@
 
 </dd>
     <dt>
-    <a name = "Chunk.set_data"></a>
-    <strong>Chunk.set_data (surface, chunk_pos, data)</strong>
+    <a name = "set_data"></a>
+    <strong>set_data (surface, chunk_pos, data)</strong>
     </dt>
     <dd>
     Sets user data on the chunk, stored in a mod's global data.
@@ -218,8 +225,8 @@
 
 </dd>
     <dt>
-    <a name = "Chunk.get_index"></a>
-    <strong>Chunk.get_index (surface, chunk_pos)</strong>
+    <a name = "get_index"></a>
+    <strong>get_index (surface, chunk_pos)</strong>
     </dt>
     <dd>
     Calculates and returns a stable, deterministic, unique integer id for the given chunk_pos
@@ -247,8 +254,8 @@
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-07-22 02:48:45 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-05-21 18:35:24 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

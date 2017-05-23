@@ -37,30 +37,38 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
-  <li><strong>area</strong></li>
-  <li><a href="../modules/chunk.html">chunk</a></li>
-  <li><a href="../modules/position.html">position</a></li>
+<ul class="nowrap">
+  <li><strong>Area</strong></li>
+  <li><a href="../modules/Chunk.html">Chunk</a></li>
+  <li><a href="../modules/Position.html">Position</a></li>
   <li><a href="../modules/Tile.html">Tile</a></li>
-  <li><a href="../modules/core.html">core</a></li>
-  <li><a href="../modules/entity.html">entity</a></li>
-  <li><a href="../modules/inventory.html">inventory</a></li>
+  <li><a href="../modules/Color.html">Color</a></li>
+  <li><a href="../modules/Config.html">Config</a></li>
+  <li><a href="../modules/Core.html">Core</a></li>
+  <li><a href="../modules/Data.html">Data</a></li>
+  <li><a href="../modules/Recipe.html">Recipe</a></li>
+  <li><a href="../modules/Time.html">Time</a></li>
+  <li><a href="../modules/Entity.html">Entity</a></li>
+  <li><a href="../modules/Inventory.html">Inventory</a></li>
   <li><a href="../modules/Event.html">Event</a></li>
-  <li><a href="../modules/game.html">game</a></li>
+  <li><a href="../modules/Event.Gui.html">Event.Gui</a></li>
+  <li><a href="../modules/Event.Time.html">Event.Time</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
   <li><a href="../modules/Gui.html">Gui</a></li>
-  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/Logger.html">Logger</a></li>
   <li><a href="../modules/string.html">string</a></li>
-  <li><a href="../modules/surface.html">surface</a></li>
+  <li><a href="../modules/Surface.html">Surface</a></li>
   <li><a href="../modules/table.html">table</a></li>
-  <li><a href="../modules/time.html">time</a></li>
+  <li><a href="../modules/Trains.html">Trains</a></li>
 </ul>
 
 </div>
 
 <div id="content">
 
-<h1>Module <code>area</code></h1>
-<p>Area module</p>
+<h1>Module <code>Area</code></h1>
+<p>Area module
+ <p>For working with bounding boxes.</p>
 <p>
 
 </p>
@@ -69,43 +77,51 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Area.area">Area.area (area)</a></td>
+	<td class="name" nowrap><a href="#construct">construct (x1, y1, x2, y2)</a></td>
+	<td class="summary">Creates an area from the 2 positions p1 and p2</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#size">size (area)</a></td>
 	<td class="summary">Returns the size of the space contained in the 2d area</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Area.inside">Area.inside (area, pos)</a></td>
+	<td class="name" nowrap><a href="#inside">inside (area, pos)</a></td>
 	<td class="summary">Tests if a position {x, y} is inside (inclusive) of area</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Area.shrink">Area.shrink (area, amount)</a></td>
+	<td class="name" nowrap><a href="#shrink">shrink (area, amount)</a></td>
 	<td class="summary">Shrinks the size of an area by the given amount</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Area.expand">Area.expand (area, amount)</a></td>
+	<td class="name" nowrap><a href="#expand">expand (area, amount)</a></td>
 	<td class="summary">Expands the size of an area by the given amount</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Area.center">Area.center (area)</a></td>
+	<td class="name" nowrap><a href="#center">center (area)</a></td>
 	<td class="summary">Calculates the center of the area and returns the position</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Area.offset">Area.offset (area, pos)</a></td>
+	<td class="name" nowrap><a href="#offset">offset (area, pos)</a></td>
 	<td class="summary">Offsets the area by the {x, y} values</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Area.round_to_integer">Area.round_to_integer (area)</a></td>
+	<td class="name" nowrap><a href="#round_to_integer">round_to_integer (area)</a></td>
 	<td class="summary">Converts an area to the integer representation, by taking the floor of the left<em>top and the ceiling of the right</em>bottom</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Area.iterate">Area.iterate (area)</a></td>
+	<td class="name" nowrap><a href="#iterate">iterate (area)</a></td>
 	<td class="summary">Iterates an area.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Area.spiral_iterate">Area.spiral_iterate (area)</a></td>
+	<td class="name" nowrap><a href="#spiral_iterate">spiral_iterate (area)</a></td>
 	<td class="summary">Iterates an area in a spiral inner-most to outer-most fashion.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Area.to_table">Area.to_table (area_arr)</a></td>
+	<td class="name" nowrap><a href="#normalize">normalize (area)</a></td>
+	<td class="summary">Creates a new area, a modified copy of the original, such that left and right x, up and down y are normalized, where left.x &lt; right.x, left.y &lt; right.y order</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#to_table">to_table (area_arr)</a></td>
 	<td class="summary">Converts an area in the array format to an array in the table format</td>
 	</tr>
 </table>
@@ -118,8 +134,42 @@
 
     <dl class="function">
     <dt>
-    <a name = "Area.area"></a>
-    <strong>Area.area (area)</strong>
+    <a name = "construct"></a>
+    <strong>construct (x1, y1, x2, y2)</strong>
+    </dt>
+    <dd>
+    Creates an area from the 2 positions p1 and p2
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x1</span>
+         x-position of left_top, first point
+        </li>
+        <li><span class="parameter">y1</span>
+         y-position of left_top, first point
+        </li>
+        <li><span class="parameter">x2</span>
+         x-position of right_bottom, second point
+        </li>
+        <li><span class="parameter">y2</span>
+         y-position of right_bottom, second point
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Area tabled area
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "size"></a>
+    <strong>size (area)</strong>
     </dt>
     <dd>
     Returns the size of the space contained in the 2d area
@@ -143,8 +193,8 @@
 
 </dd>
     <dt>
-    <a name = "Area.inside"></a>
-    <strong>Area.inside (area, pos)</strong>
+    <a name = "inside"></a>
+    <strong>inside (area, pos)</strong>
     </dt>
     <dd>
     Tests if a position {x, y} is inside (inclusive) of area
@@ -171,8 +221,8 @@
 
 </dd>
     <dt>
-    <a name = "Area.shrink"></a>
-    <strong>Area.shrink (area, amount)</strong>
+    <a name = "shrink"></a>
+    <strong>shrink (area, amount)</strong>
     </dt>
     <dd>
     Shrinks the size of an area by the given amount
@@ -199,8 +249,8 @@
 
 </dd>
     <dt>
-    <a name = "Area.expand"></a>
-    <strong>Area.expand (area, amount)</strong>
+    <a name = "expand"></a>
+    <strong>expand (area, amount)</strong>
     </dt>
     <dd>
     Expands the size of an area by the given amount
@@ -227,8 +277,8 @@
 
 </dd>
     <dt>
-    <a name = "Area.center"></a>
-    <strong>Area.center (area)</strong>
+    <a name = "center"></a>
+    <strong>center (area)</strong>
     </dt>
     <dd>
     Calculates the center of the area and returns the position
@@ -252,8 +302,8 @@
 
 </dd>
     <dt>
-    <a name = "Area.offset"></a>
-    <strong>Area.offset (area, pos)</strong>
+    <a name = "offset"></a>
+    <strong>offset (area, pos)</strong>
     </dt>
     <dd>
     Offsets the area by the {x, y} values
@@ -280,8 +330,8 @@
 
 </dd>
     <dt>
-    <a name = "Area.round_to_integer"></a>
-    <strong>Area.round_to_integer (area)</strong>
+    <a name = "round_to_integer"></a>
+    <strong>round_to_integer (area)</strong>
     </dt>
     <dd>
     Converts an area to the integer representation, by taking the floor of the left<em>top and the ceiling of the right</em>bottom
@@ -305,8 +355,8 @@
 
 </dd>
     <dt>
-    <a name = "Area.iterate"></a>
-    <strong>Area.iterate (area)</strong>
+    <a name = "iterate"></a>
+    <strong>iterate (area)</strong>
     </dt>
     <dd>
     Iterates an area.
@@ -329,16 +379,15 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-<span class="keyword">for</span> x,y <span class="keyword">in</span> Area.iterate({{<span class="number">0</span>, -<span class="number">5</span>}, {<span class="number">3</span>, -<span class="number">3</span>}}) <span class="keyword">do</span>
+        <pre class="example"><span class="keyword">for</span> x,y <span class="keyword">in</span> Area.iterate({{<span class="number">0</span>, -<span class="number">5</span>}, {<span class="number">3</span>, -<span class="number">3</span>}}) <span class="keyword">do</span>
 ...
 <span class="keyword">end</span></pre>
     </ul>
 
 </dd>
     <dt>
-    <a name = "Area.spiral_iterate"></a>
-    <strong>Area.spiral_iterate (area)</strong>
+    <a name = "spiral_iterate"></a>
+    <strong>spiral_iterate (area)</strong>
     </dt>
     <dd>
     Iterates an area in a spiral inner-most to outer-most fashion. </p>
@@ -348,7 +397,7 @@
 
 <pre>
 for x, y in Area.spiral_iterate({{-2, -1}, {2, 1}}) do
-  print("(" .. x .. ", " .. y .. ")")
+ print("(" .. x .. ", " .. y .. ")")
 end
  prints: (0, 0) (1, 0) (1, 1) (0, 1) (-1, 1) (-1, 0) (-1, -1) (0, -1) (1, -1) (2, -1) (2, 0) (2, 1) (-2, 1) (-2, 0) (-2, -1)
 </pre>
@@ -375,8 +424,33 @@ end
 
 </dd>
     <dt>
-    <a name = "Area.to_table"></a>
-    <strong>Area.to_table (area_arr)</strong>
+    <a name = "normalize"></a>
+    <strong>normalize (area)</strong>
+    </dt>
+    <dd>
+    Creates a new area, a modified copy of the original, such that left and right x, up and down y are normalized, where left.x &lt; right.x, left.y &lt; right.y order
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">area</span>
+         the area to adjust
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a normalized area, always { left<em>top = {x = ..., y = ...}, right</em>bottom = {x = ..., y = ...} }
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "to_table"></a>
+    <strong>to_table (area_arr)</strong>
     </dt>
     <dd>
     Converts an area in the array format to an array in the table format
@@ -392,7 +466,7 @@ end
     <h3>Returns:</h3>
     <ol>
 
-        a converted position, { x = pos<em>arr[1], y = pos</em>arr[2] }
+        a converted area, { left<em>top = area</em>arr[1], right<em>bottom = area</em>arr[2] }
     </ol>
 
 
@@ -405,8 +479,8 @@ end
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-07-22 02:48:45 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-05-21 18:35:24 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

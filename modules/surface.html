@@ -37,29 +37,36 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
-  <li><a href="../modules/area.html">area</a></li>
-  <li><a href="../modules/chunk.html">chunk</a></li>
-  <li><a href="../modules/position.html">position</a></li>
+<ul class="nowrap">
+  <li><a href="../modules/Area.html">Area</a></li>
+  <li><a href="../modules/Chunk.html">Chunk</a></li>
+  <li><a href="../modules/Position.html">Position</a></li>
   <li><a href="../modules/Tile.html">Tile</a></li>
-  <li><a href="../modules/core.html">core</a></li>
-  <li><a href="../modules/entity.html">entity</a></li>
-  <li><a href="../modules/inventory.html">inventory</a></li>
+  <li><a href="../modules/Color.html">Color</a></li>
+  <li><a href="../modules/Config.html">Config</a></li>
+  <li><a href="../modules/Core.html">Core</a></li>
+  <li><a href="../modules/Data.html">Data</a></li>
+  <li><a href="../modules/Recipe.html">Recipe</a></li>
+  <li><a href="../modules/Time.html">Time</a></li>
+  <li><a href="../modules/Entity.html">Entity</a></li>
+  <li><a href="../modules/Inventory.html">Inventory</a></li>
   <li><a href="../modules/Event.html">Event</a></li>
-  <li><a href="../modules/game.html">game</a></li>
+  <li><a href="../modules/Event.Gui.html">Event.Gui</a></li>
+  <li><a href="../modules/Event.Time.html">Event.Time</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
   <li><a href="../modules/Gui.html">Gui</a></li>
-  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/Logger.html">Logger</a></li>
   <li><a href="../modules/string.html">string</a></li>
-  <li><strong>surface</strong></li>
+  <li><strong>Surface</strong></li>
   <li><a href="../modules/table.html">table</a></li>
-  <li><a href="../modules/time.html">time</a></li>
+  <li><a href="../modules/Trains.html">Trains</a></li>
 </ul>
 
 </div>
 
 <div id="content">
 
-<h1>Module <code>surface</code></h1>
+<h1>Module <code>Surface</code></h1>
 <p>Surface module</p>
 <p>
 
@@ -69,14 +76,20 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Surface.lookup">Surface.lookup (surface)</a></td>
+	<td class="name" nowrap><a href="#lookup">lookup (surface)</a></td>
 	<td class="summary">Flexible, safe lookup function for surfaces.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Surface.find_all_entities">Surface.find_all_entities (search_criteria)</a></td>
+	<td class="name" nowrap><a href="#find_all_entities">find_all_entities (search_criteria)</a></td>
 	<td class="summary">Given search criteria, a table that contains a name or type of entity to search for,
-  and optionally surface or force, searches all loaded chunks for the entities that
-  match the critera.</td>
+ and optionally surface or force, searches all loaded chunks for the entities that
+ match the critera.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_surface_bounds">get_surface_bounds (surface)</a></td>
+	<td class="summary">determine surface extension
+ returns Area covering entire extension of this surface
+ useful, if you compare total number of chunks with number of chunks of this area</td>
 	</tr>
 </table>
 
@@ -88,17 +101,17 @@
 
     <dl class="function">
     <dt>
-    <a name = "Surface.lookup"></a>
-    <strong>Surface.lookup (surface)</strong>
+    <a name = "lookup"></a>
+    <strong>lookup (surface)</strong>
     </dt>
     <dd>
     Flexible, safe lookup function for surfaces.  <p>
-  May be given a string, the name of a surface, or may be given a table with surface names,
-  may be given the a surface object, or may be given a table of surface objects, or
-  may be given nil. <p>
-  Returns an array of surface objects of all valid, existing surfaces
-  If a surface does not exist for the surface, it is ignored, if no surfaces
-  are given, an empty array is returned.
+ May be given a string, the name of a surface, or may be given a table with surface names,
+ may be given the a surface object, or may be given a table of surface objects, or
+ may be given nil. <p>
+ Returns an array of surface objects of all valid, existing surfaces
+ If a surface does not exist for the surface, it is ignored, if no surfaces
+ are given, an empty array is returned.
 
 
     <h3>Parameters:</h3>
@@ -111,6 +124,7 @@
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">LuaSurface[]</span></span>
         the list of surfaces looked up
     </ol>
 
@@ -119,25 +133,27 @@
 
 </dd>
     <dt>
-    <a name = "Surface.find_all_entities"></a>
-    <strong>Surface.find_all_entities (search_criteria)</strong>
+    <a name = "find_all_entities"></a>
+    <strong>find_all_entities (search_criteria)</strong>
     </dt>
     <dd>
     Given search criteria, a table that contains a name or type of entity to search for,
-  and optionally surface or force, searches all loaded chunks for the entities that
-  match the critera.
+ and optionally surface or force, searches all loaded chunks for the entities that
+ match the critera.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">search_criteria</span>
-         a table of criteria. Must contain either the name or type or force of an entity. May contain surface or force.
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.5">table</a></span>
+         a table of criteria. Must contain either the <em>name</em> or <em>type</em> or <em>force</em> of an entity. May contain <em>surface</em> or <em>force</em> or <em>area</em>.
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.5">table</a></span>
         an array of all entities that matched the criteria
     </ol>
 
@@ -145,8 +161,39 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">Surface.final_all_entities({ <span class="global">type</span> = <span class="string">'unit'</span>, surface = <span class="string">'nauvis'</span> }) --returns a list containing all unit entities on the nauvis surface</pre>
+        <pre class="example">Surface.find_all_entities({ <span class="global">type</span> = <span class="string">'unit'</span>, surface = <span class="string">'nauvis'</span>, area = {{-<span class="number">1000</span>,<span class="number">20</span>},{-<span class="number">153</span>,<span class="number">2214</span>}}) <span class="comment">--returns a list containing all unit entities on the nauvis surface in the given area</span></pre>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "get_surface_bounds"></a>
+    <strong>get_surface_bounds (surface)</strong>
+    </dt>
+    <dd>
+    determine surface extension
+ returns Area covering entire extension of this surface
+ useful, if you compare total number of chunks with number of chunks of this area
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">surface</span>
+            <span class="types"><span class="type">LuaSurface</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.5">table</a></span>
+        Area
+    </ol>
+
+
+
 
 </dd>
 </dl>
@@ -155,8 +202,8 @@
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-07-22 02:48:45 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-05-21 18:35:24 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

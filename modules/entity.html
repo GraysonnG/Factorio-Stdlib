@@ -37,29 +37,36 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
-  <li><a href="../modules/area.html">area</a></li>
-  <li><a href="../modules/chunk.html">chunk</a></li>
-  <li><a href="../modules/position.html">position</a></li>
+<ul class="nowrap">
+  <li><a href="../modules/Area.html">Area</a></li>
+  <li><a href="../modules/Chunk.html">Chunk</a></li>
+  <li><a href="../modules/Position.html">Position</a></li>
   <li><a href="../modules/Tile.html">Tile</a></li>
-  <li><a href="../modules/core.html">core</a></li>
-  <li><strong>entity</strong></li>
-  <li><a href="../modules/inventory.html">inventory</a></li>
+  <li><a href="../modules/Color.html">Color</a></li>
+  <li><a href="../modules/Config.html">Config</a></li>
+  <li><a href="../modules/Core.html">Core</a></li>
+  <li><a href="../modules/Data.html">Data</a></li>
+  <li><a href="../modules/Recipe.html">Recipe</a></li>
+  <li><a href="../modules/Time.html">Time</a></li>
+  <li><strong>Entity</strong></li>
+  <li><a href="../modules/Inventory.html">Inventory</a></li>
   <li><a href="../modules/Event.html">Event</a></li>
-  <li><a href="../modules/game.html">game</a></li>
+  <li><a href="../modules/Event.Gui.html">Event.Gui</a></li>
+  <li><a href="../modules/Event.Time.html">Event.Time</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
   <li><a href="../modules/Gui.html">Gui</a></li>
-  <li><a href="../modules/log.html">log</a></li>
+  <li><a href="../modules/Logger.html">Logger</a></li>
   <li><a href="../modules/string.html">string</a></li>
-  <li><a href="../modules/surface.html">surface</a></li>
+  <li><a href="../modules/Surface.html">Surface</a></li>
   <li><a href="../modules/table.html">table</a></li>
-  <li><a href="../modules/time.html">time</a></li>
+  <li><a href="../modules/Trains.html">Trains</a></li>
 </ul>
 
 </div>
 
 <div id="content">
 
-<h1>Module <code>entity</code></h1>
+<h1>Module <code>Entity</code></h1>
 <p>Entity module</p>
 <p>
 
@@ -69,24 +76,38 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Entity.to_selection_area">Entity.to_selection_area (entity)</a></td>
+	<td class="name" nowrap><a href="#to_selection_area">to_selection_area (entity)</a></td>
 	<td class="summary">Converts an entity and its selection_box to the area around it</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Entity.to_collision_area">Entity.to_collision_area (entity)</a></td>
-	<td class="summary">Converts an entity and its selection_box to the area around it</td>
+	<td class="name" nowrap><a href="#to_collision_area">to_collision_area (entity)</a></td>
+	<td class="summary">Converts an entity and its collision_box to the area around it</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Entity.has">Entity.has (entity, field_name)</a></td>
+	<td class="name" nowrap><a href="#has">has (entity, field_name)</a></td>
 	<td class="summary">Tests whether an entity has access to the field</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Entity.get_data">Entity.get_data (entity)</a></td>
+	<td class="name" nowrap><a href="#get_data">get_data (entity)</a></td>
 	<td class="summary">Gets user data from the entity, stored in a mod's global data.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Entity.set_data">Entity.set_data (entity, data)</a></td>
+	<td class="name" nowrap><a href="#set_data">set_data (entity, data)</a></td>
 	<td class="summary">Sets user data on the entity, stored in a mod's global data.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_frozen">set_frozen (entity, mode)</a></td>
+	<td class="summary">Freezes an entity, by making it inactive, inoperable, and non-rotatable, or unfreezes by doing the reverse.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_indestructible">set_indestructible (entity, mode)</a></td>
+	<td class="summary">Makes an entity indestructible, so that it can not be damaged or mined by the player or enemy factions</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_are_equal">_are_equal (entity_a, entity_b)</a></td>
+	<td class="summary">Tests if two entities are equal
+ <p>If they don't have reference equality and entity<em>a has an 'equals' function,
+ it will be called with entity</em>b as the first argument</p></td>
 	</tr>
 </table>
 
@@ -98,8 +119,8 @@
 
     <dl class="function">
     <dt>
-    <a name = "Entity.to_selection_area"></a>
-    <strong>Entity.to_selection_area (entity)</strong>
+    <a name = "to_selection_area"></a>
+    <strong>to_selection_area (entity)</strong>
     </dt>
     <dd>
     Converts an entity and its selection_box to the area around it
@@ -123,11 +144,11 @@
 
 </dd>
     <dt>
-    <a name = "Entity.to_collision_area"></a>
-    <strong>Entity.to_collision_area (entity)</strong>
+    <a name = "to_collision_area"></a>
+    <strong>to_collision_area (entity)</strong>
     </dt>
     <dd>
-    Converts an entity and its selection_box to the area around it
+    Converts an entity and its collision_box to the area around it
 
 
     <h3>Parameters:</h3>
@@ -140,7 +161,7 @@
     <h3>Returns:</h3>
     <ol>
 
-        area that entity selection_box is valid for
+        area that entity collision_box is valid for
     </ol>
 
 
@@ -148,8 +169,8 @@
 
 </dd>
     <dt>
-    <a name = "Entity.has"></a>
-    <strong>Entity.has (entity, field_name)</strong>
+    <a name = "has"></a>
+    <strong>has (entity, field_name)</strong>
     </dt>
     <dd>
     Tests whether an entity has access to the field
@@ -176,8 +197,8 @@
 
 </dd>
     <dt>
-    <a name = "Entity.get_data"></a>
-    <strong>Entity.get_data (entity)</strong>
+    <a name = "get_data"></a>
+    <strong>get_data (entity)</strong>
     </dt>
     <dd>
     Gets user data from the entity, stored in a mod's global data.
@@ -202,8 +223,8 @@
 
 </dd>
     <dt>
-    <a name = "Entity.set_data"></a>
-    <strong>Entity.set_data (entity, data)</strong>
+    <a name = "set_data"></a>
+    <strong>set_data (entity, data)</strong>
     </dt>
     <dd>
     Sets user data on the entity, stored in a mod's global data.
@@ -230,14 +251,109 @@
 
 
 </dd>
+    <dt>
+    <a name = "set_frozen"></a>
+    <strong>set_frozen (entity, mode)</strong>
+    </dt>
+    <dd>
+    Freezes an entity, by making it inactive, inoperable, and non-rotatable, or unfreezes by doing the reverse.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">entity</span>
+         the entity to freeze or unfreeze
+        </li>
+        <li><span class="parameter">mode</span>
+         (optional) if true, freezes the entity, if false, unfreezes the entity. If not specified, is true.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        entity passed into it
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_indestructible"></a>
+    <strong>set_indestructible (entity, mode)</strong>
+    </dt>
+    <dd>
+    Makes an entity indestructible, so that it can not be damaged or mined by the player or enemy factions
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">entity</span>
+         the entity to set indestructible
+        </li>
+        <li><span class="parameter">mode</span>
+         (optional) if true, makes the entity indestructible, if false, makes the entity destructable. If not specified, is true.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        entity passed into it
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_are_equal"></a>
+    <strong>_are_equal (entity_a, entity_b)</strong>
+    </dt>
+    <dd>
+    Tests if two entities are equal
+ <p>If they don't have reference equality and entity<em>a has an 'equals' function,
+ it will be called with entity</em>b as the first argument</p>
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">entity_a</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">entity_b</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.2/manual.html#6.5">table</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
 </dl>
 
 
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-07-22 02:48:45 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-05-21 18:35:24 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
